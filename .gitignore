@@ -1,0 +1,11 @@
+venv/
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+Fake.csv
+True.csv
+bert_model/checkpoint-*/
+dist/
+build/
+.env
