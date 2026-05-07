@@ -39,8 +39,8 @@ router.post("/predict", async (req, res) => {
     // Save history
     await News.create({
       text,
-      prediction: results[0].result[0].label,
-      confidence: results[0].result[0].score
+      prediction: results[0].result.prediction,
+      confidence: results[0].result.confidence
     });
 
     res.json({ results });
