@@ -20,7 +20,15 @@ def predict():
 
     result = classifier(text)
 
-    return jsonify(result)
+    label = result[0]["label"]
+    score = result[0]["score"]
+
+    prediction = "FAKE" if label == "LABEL_1" else "REAL"
+
+    return jsonify({
+        "prediction": prediction,
+        "confidence": round(score * 100, 2)
+    })
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=7860)
