@@ -43,10 +43,17 @@ lstm_model = load_model("lstm.h5")
 tokenizer = joblib.load("tokenizer.pkl")
 
 # DistilBERT
-bert_tokenizer = DistilBertTokenizerFast.from_pretrained("./bert_model")
-bert_model = DistilBertForSequenceClassification.from_pretrained("./bert_model")
-bert_model.eval()
+# bert_tokenizer = DistilBertTokenizerFast.from_pretrained("./bert_model")
+# bert_model = DistilBertForSequenceClassification.from_pretrained("./bert_model")
+# bert_model.eval()
+bert_tokenizer = DistilBertTokenizerFast.from_pretrained(
+    "distilbert-base-uncased"
+)
 
+bert_model = DistilBertForSequenceClassification.from_pretrained(
+    "distilbert-base-uncased",
+    num_labels=2
+)
 # ==================================================
 # REQUEST MODEL
 # ==================================================
