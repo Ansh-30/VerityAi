@@ -1,6 +1,6 @@
 flask
-torch
 transformers
+torch
 gunicorn
-sentencepiece
 accelerate
+sentencepiece

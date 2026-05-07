@@ -1,42 +1,26 @@
 from flask import Flask, request, jsonify
-from transformers import BertTokenizer, BertForSequenceClassification
-import torch
+from transformers import pipeline
 
 app = Flask(__name__)
 
-# Load model and tokenizer
-model_path = "./bert_model"
-
-tokenizer = BertTokenizer.from_pretrained(model_path)
-model = BertForSequenceClassification.from_pretrained(model_path)
+classifier = pipeline(
+    "text-classification",
+    model="distilbert-base-uncased"
+)
 
 @app.route("/")
 def home():
-    return "Verity AI ML Server Running"
+    return "Verity AI ML API Running"
 
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.get_json()
-    text = data["text"]
 
-    inputs = tokenizer(
-        text,
-        return_tensors="pt",
-        truncation=True,
-        padding=True,
-        max_length=256
-    )
+    text = data.get("text", "")
 
-    with torch.no_grad():
-        outputs = model(**inputs)
+    result = classifier(text)
 
-    prediction = torch.argmax(outputs.logits, dim=1).item()
-
-    label = "FAKE" if prediction == 1 else "REAL"
-
-    return jsonify({
-        "prediction": label
-    })
+    return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=7860)
