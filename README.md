@@ -54,3 +54,7 @@ fake-news-ml/
 models/
 routes/
 controllers/
+
+## Recent Updates
+
+- Improved project documentation.
