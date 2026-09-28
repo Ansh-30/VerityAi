@@ -20,7 +20,7 @@ An AI-powered Fake News Detection platform that analyzes news articles using mul
 - LSTM Neural Network
 - DistilBERT Transformer
 
---
+---
 
 ## 🛠️ Tech Stack
 
