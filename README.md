@@ -24,7 +24,7 @@ An AI-powered Fake News Detection platform that analyzes news articles using mul
 
 ## 🛠️ Tech Stack
 
-### Frontend.
+### Frontend
 - React.js
 - Vite
 - Tailwind CSS
