@@ -58,3 +58,4 @@ controllers/
 ## Recent Updates
 
 - Improved project documentation.
+- BERT Working.
